@@ -6,8 +6,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import {withStyles, makeStyles, hexToRgb} from '@material-ui/core/styles';
-import red from "@material-ui/core/colors/red";
-import {blueGrey} from "@material-ui/core/colors";
+
 
 export default ({data}) => (
     <div>
@@ -27,7 +26,7 @@ export default ({data}) => (
                 <TableBody>
                     <TableRow key="1">
                         <TableCell style={styles.cell}>{data.NewConfirmed}</TableCell>
-                        <TableCell style={styles.cell}>{data.TotalConfirmed}</TableCell>
+                        <TableCell style={styles.cell}>{data.TotalConfirmed.toLocaleString('en-US')}</TableCell>
                         <TableCell style={styles.cell}>{data.NewDeaths}</TableCell>
                         <TableCell style={styles.cell}>{data.TotalDeaths}</TableCell>
                         <TableCell style={styles.cell}>{data.NewRecovered}</TableCell>

@@ -6,20 +6,20 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import img from '../../assets/img/covid19.png';
 import SummaryTable from "./SummaryTable";
+import {BASE_URL} from '../Utils'
 
 
 export default class Summary extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            date: new Date().toLocaleString(),
             isLoading: true,
             summary: {}
         };
     }
 
     componentDidMount = async () => {
-        await fetch('http://localhost:8080/summary')
+        await fetch(BASE_URL + '/summary')
             .then(res => res.json())
             .then(
                 (result) => {
@@ -55,7 +55,7 @@ export default class Summary extends Component{
                             <SummaryTable data={this.state.summary}/>
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            Last Update {this.state.date}
+                            Last Update {this.state.summary.date}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
