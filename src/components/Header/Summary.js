@@ -3,10 +3,13 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 import img from '../../assets/img/covid19.png';
-import SummaryTable from "./SummaryTable";
 import {BASE_URL} from '../Utils'
+import CircularProgress from "@material-ui/core/CircularProgress";
+import DetailsCard from "./DetailsCard";
+import GridList from "@material-ui/core/GridList";
+import {ThemeOptions as theme} from "@material-ui/core/styles/createMuiTheme";
+import Grid from "@material-ui/core/Grid";
 
 
 export default class Summary extends Component{
@@ -37,13 +40,14 @@ export default class Summary extends Component{
     };
 
     render() {
-        if (this.state.isLoading) {
-            return <p>Loading...</p>;
-        }
+        // if (this.state.isLoading) {
+        //     return <CircularProgress color="secondary" />;
+        // }
         return (
             <Card>
                 <CardActionArea>
                     <CardMedia
+                        className={styles.media}
                         component="img"
                         alt="COVID-19 Info"
                         height="180"
@@ -51,13 +55,19 @@ export default class Summary extends Component{
                         title="COVID-19 Info"
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            <SummaryTable data={this.state.summary}/>
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Last Update {this.state.summary.date}
-                        </Typography>
+                        <GridList className={styles.gridList} cols={1} spacing={24}>
+                            <Grid item xs={4}>
+                                <DetailsCard title={"Confirmed Cases"} new={this.state.summary.NewConfirmed} total={this.state.summary.TotalConfirmed} color={"yellow"}/>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <DetailsCard title={"Deaths Cases"} new={this.state.summary.NewDeaths} total={this.state.summary.TotalDeaths} color={"red"}/>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <DetailsCard title={"Recovered Cases"} new={this.state.summary.NewRecovered} total={this.state.summary.TotalRecovered} color={"green"}/>
+                            </Grid>
+                        </GridList>
                     </CardContent>
+
                 </CardActionArea>
             </Card >
         );
@@ -71,5 +81,10 @@ const styles = {
         paddingTop: '56.25%', // 16:9,
         marginTop: '30',
         size: 103213
-    }
+    },
+    gridList: {
+        maxWidth: '100%',
+
+        height: 450,
+    },
 };

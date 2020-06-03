@@ -36,47 +36,50 @@ export default function CountriesTable({data}) {
     };
 
     return (
-        <Paper className={classes.root}>
-            <TableContainer>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead className={classes.headers}>
-                        <TableRow>
-                            {columns.map((column) => (
-                                <TableCell key={column.id}>
-                                    {column.label}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => {
-                            console.log(row);
-                            return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={i}>
-                                    {columns.map((column) => {
-                                        const value = row[column.id];
-                                        return (
-                                            <TableCell key={column.id}>
-                                                {value}
-                                            </TableCell>
-                                        );
-                                    })}
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={data.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-        </Paper>
+        <div>
+            <Paper className={classes.root}>
+                <TableContainer>
+                    <Table stickyHeader aria-label="sticky table">
+                        <TableHead className={classes.headers}>
+                            <TableRow>
+                                {columns.map((column) => (
+                                    <TableCell key={column.id} className={classes.headers}>
+                                        {column.label}
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => {
+                                console.log(row);
+                                return (
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={i}>
+                                        {columns.map((column) => {
+                                            const value = row[column.id];
+                                            return (
+                                                <TableCell key={column.id} className={classes.cell}>
+                                                    {value}
+                                                </TableCell>
+                                            );
+                                        })}
+                                    </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={data.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                />
+            </Paper>
+        </div>
+
     );
 }
 
@@ -86,9 +89,16 @@ const useStyles = makeStyles({
         width: '100%',
     },
     container: {
-        maxHeight: 500,
+        maxHeight: 450,
     },
     headers: {
-        fontSize: 20,
+        textAlign: 'center',
+        fontFamily: "GillSans-Italic",
+        backgroundColor: 'black',
+        color: 'white',
+    },
+    cell: {
+        fontFamily: "GillSans-Light",
+        textAlign: 'center',
     },
 });

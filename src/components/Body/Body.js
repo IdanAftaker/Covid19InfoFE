@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from "react";
 import CountriesTable from "./CountriesTable";
 import {BASE_URL} from '../Utils'
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default class Body extends Component{
     constructor(props) {
@@ -13,7 +14,7 @@ export default class Body extends Component{
 
     render() {
         if (this.state.isLoading) {
-            return <p>Loading countries...</p>;
+            return <CircularProgress />
         }
         return(
             <Fragment>

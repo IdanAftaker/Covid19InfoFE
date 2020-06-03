@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
     text: {
         fontSize: 20,
-        fontFamily: "AppleSDGothicNeo-UltraLight",
+        fontFamily: "GillSans-Light",
         color: "white",
     },
 
