@@ -38,7 +38,7 @@ export default function CountriesTable({data}) {
     return (
         <div>
             <Paper className={classes.root}>
-                <TableContainer>
+                <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead className={classes.headers}>
                             <TableRow>
@@ -51,7 +51,6 @@ export default function CountriesTable({data}) {
                         </TableHead>
                         <TableBody>
                             {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => {
-                                console.log(row);
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={i}>
                                         {columns.map((column) => {

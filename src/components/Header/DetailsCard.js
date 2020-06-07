@@ -4,7 +4,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/styles/makeStyles";
 import Divider from "@material-ui/core/Divider";
-import * as theme from "@material-ui/system";
 
 export default function DetailsCard(data) {
     const classes = useStyles();
@@ -14,18 +13,17 @@ export default function DetailsCard(data) {
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     {data.title}
                 </Typography>
-                <Divider color='white'/>
-                <Typography className={classes.pos} variant="h5" component="h4">
+                <Divider className={classes.divider}/>
+                <Typography className={classes.new} variant="h5" component="h4">
                     New {data.new}
                 </Typography>
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography className={classes.total} color="textSecondary">
                     Total {data.total}
                 </Typography>
             </CardContent>
         </Card>
     );
 }
-
 
 const useStyles = makeStyles({
     root: {
@@ -42,11 +40,19 @@ const useStyles = makeStyles({
     title: {
         fontSize: 20,
         color: 'white',
-        fontFamily: "Futura",
+        fontFamily: "Verdana",
     },
-    pos: {
-        marginBottom: 12,
+    new: {
+        marginBottom: 20,
         color: 'white',
         fontFamily: "GillSans-Light",
+    },
+    total: {
+        marginBottom: 8,
+        color: 'white',
+        fontFamily: "GillSans-Light",
+    },
+    divider: {
+        backgroundColor: 'white',
     },
 });

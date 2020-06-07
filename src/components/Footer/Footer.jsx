@@ -15,19 +15,26 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
     root: {
-        background: "black",
-        height: '7.5rem',
+        background: '#1a1a1a',
+        height: '10rem',
         bottom: 0,
     },
     icon: {
-        fontSize: 25,
+        fontSize: 35,
         padding: 10,
         color: "white",
     },
     text: {
         fontSize: 20,
-        fontFamily: "GillSans-Light",
+        fontFamily: "KohinoorBangla-Light",
         color: "white",
+    },
+    links: {
+        fontSize: 50,
+        color: "white",
+        backgroundColor: '#1a1a1a',
+        justifyContent:"center",
+        paddingLeft: 90,
     },
 
 });
@@ -45,11 +52,20 @@ export default function Footer() {
                 </TableHead>
                 <TableBody>
                     <TableRow key="1">
-                        <FontAwesomeIcon className={classes.icon} icon={faFacebookF} />
-                        <FontAwesomeIcon className={classes.icon} icon={faLinkedinIn} />
-                        <FontAwesomeIcon className={classes.icon} icon={faGithubAlt} />
-                        <FontAwesomeIcon className={classes.icon} icon={faEnvelope} />
-
+                        <TableCell className={classes.links}>
+                            <a href='https://www.facebook.com/idan.aftaker'>
+                                <FontAwesomeIcon className={classes.icon} icon={faFacebookF} />
+                            </a>
+                            <a href="https://www.linkedin.com/in/idanaftaker/">
+                                <FontAwesomeIcon className={classes.icon} icon={faLinkedinIn} />
+                            </a>
+                            <a href="https://github.com/IdanAftaker">
+                                <FontAwesomeIcon className={classes.icon} icon={faGithubAlt} />
+                            </a>
+                            <a href="mailto:idanaftaker@gmail.com">
+                                <FontAwesomeIcon className={classes.icon} icon={faEnvelope} />
+                            </a>
+                        </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

@@ -5,10 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import img from '../../assets/img/covid19.png';
 import {BASE_URL} from '../Utils'
-import CircularProgress from "@material-ui/core/CircularProgress";
 import DetailsCard from "./DetailsCard";
 import GridList from "@material-ui/core/GridList";
-import {ThemeOptions as theme} from "@material-ui/core/styles/createMuiTheme";
 import Grid from "@material-ui/core/Grid";
 
 
@@ -47,7 +45,7 @@ export default class Summary extends Component{
             <Card>
                 <CardActionArea>
                     <CardMedia
-                        className={styles.media}
+                        // className={styles.media}
                         component="img"
                         alt="COVID-19 Info"
                         height="180"
@@ -55,7 +53,7 @@ export default class Summary extends Component{
                         title="COVID-19 Info"
                     />
                     <CardContent>
-                        <GridList className={styles.gridList} cols={1} spacing={24}>
+                        <GridList cols={1} spacing={24}>
                             <Grid item xs={4}>
                                 <DetailsCard title={"Confirmed Cases"} new={this.state.summary.NewConfirmed} total={this.state.summary.TotalConfirmed} color={"yellow"}/>
                             </Grid>
@@ -84,7 +82,6 @@ const styles = {
     },
     gridList: {
         maxWidth: '100%',
-
         height: 450,
     },
 };
